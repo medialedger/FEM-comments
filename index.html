@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+	<title>Interactive comments section</title>
+</head>
+<body>
+
+	<main>
+
+		<ol id="comment-list"></ol>
+
+		<form class="add comment full">
+			<textarea name="comment-add" id="comment-add" rows="4" placeholder="Add a comment…"></textarea>
+			<div class="avatar">
+				<img src="images/avatars/image-amyrobson.webp" alt="my avatar">
+			</div>
+			<input type="submit" class="btn-primary" value="Send">
+		</form>
+
+	</main>
+
+
+
+
+<!--
+
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Create, Read, Update, and Delete comments and replies
+- Upvote and downvote comments
+- **Bonus**: If you're building a purely front-end project, use `localStorage` to save the current state in the browser that persists when the browser is refreshed.
+- **Bonus**: Instead of using the `createdAt` strings from the `data.json` file, try using timestamps and dynamically track the time since the comment or reply was posted.
+
+- First-level comments should be ordered by their score, whereas nested replies are ordered by time added.
+- Replying to a comment adds the new reply to the bottom of the nested replies within that comment.
+- A confirmation modal should pop up before a comment or reply is deleted.
+- Adding a new comment or reply uses the `currentUser` object from within the `data.json` file.
+- You can only edit or delete your own comments and replies.
+
+-->
+
+	<link rel="stylesheet" href="style.css">
+	<script src="scripts.js" defer></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
+</body>
+</html>
