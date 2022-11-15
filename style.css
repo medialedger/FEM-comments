@@ -21,15 +21,14 @@ body {
 }
 button,
 input[type="submit"] {
-	display: grid;
-	place-content: center;
-	border: none;
-	padding: 0;
-}
-.btn-primary {
 	font-size: 1em;
 	display: grid;
 	place-content: center;
+	border: none;
+	padding-block: 0;
+	padding-inline: 0;
+}
+input[type="submit"].btn-primary {
 	block-size: 3em;
 	padding-inline: 2em;
 	border-radius: .5em;
@@ -40,34 +39,111 @@ input[type="submit"] {
 }
 main {
 	inline-size: 90%;
+	max-inline-size: 45.625em;
 	margin-inline: auto;
 }
 .comment {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	gap: 0 1em;
+	align-items: center;
 	padding: 1em;
 	background-color: var(--color-comment-bg);
 	border-radius: .5em;
 	margin-block: 1em;
 }
-.comment-header {
+.comment .user {
 	display: flex;
 	gap: 1em;
 	align-items: center;
+	grid-column: span 2;
 }
 .avatar {
 	inline-size: 2em;
 	aspect-ratio: 1/1;
 	border-radius: 50%;
 	overflow: hidden;
+	justify-self: start;
 }
 .avatar img {
 	display: block;
 	inline-size: 100%;
 	block-size: auto;
 }
-.comment-footer {
+.comment .username {
+	color: var(--color-text-dark);
+	font-weight: 500;
 	display: flex;
+	align-items: center;
+	gap: .5em;
+}
+.comment .username b {
+	display: inline-block;
+	background-color: var(--color-link-primary);
+	color: #fff;
+	font-size: 0.8125em;
+	font-weight: 500;
+	border-radius: .15em;
+	padding: .1em .4em;
+}
+.comment .post-date {
+	justify-self: end;
+	text-align: right;
+	font-size: 0.8125em;
+}
+.comment .content {
+	grid-column: span 3;
+}
+.comment .content p {
+	line-height: 1.5;
+}
+.comment .content p b {
+	font-weight: 500;
+	color: var(--color-link-primary);
+} 
+.comment .vote {
+	display: flex;
+	align-items: center;
+	background-color: var(--color-page-bg);
+	border-radius: 0.625em;
+	overflow: hidden;
+	justify-self: start;
+}
+.comment .vote button {
+	display: grid;
+	place-content: center;
+	block-size: 2.5em;
+	aspect-ratio: 1/1;
+	background-color: transparent;
+	color: var(--color-button-vote);
+}
+.comment .vote button svg {
+	display: block;
+	inline-size: .625em;
+	block-size: auto;
+}
+.comment .vote-count {
+	color: var(--color-text-vote);
+	font-weight: 500;
+}
+.comment .actions {
+	display: flex;
+	align-items: center;
 	gap: 1em;
-	justify-content: space-between;
+	justify-self: end;
+	grid-column: span 2;
+}
+.actions button {
+	display: flex;
+	align-items: center;
+	gap: .5em;
+	block-size: 2.5em;
+	background-color: transparent;
+	font-weight: 500;
+	color: var(--color-link-primary);
+}
+.actions .btn-delete {
+	color: var(--color-link-secondary);
 }
 ol {
 	margin: 0;
@@ -81,8 +157,9 @@ ol {
 
 /* add comment */
 .add {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 	gap: 1em;
 	align-items: center;
 	padding: 1em;
@@ -90,10 +167,70 @@ ol {
 	border-radius: .5em;
 }
 .add textarea {
-	grid-column: span 2;
+	inline-size: 100%;
 	border: 1px solid var(--color-border);
 	border-radius: .5em;
 	font-family: inherit;
 	color: inherit;
 	padding: 1em;
+}
+
+
+@media screen and (min-width: 48em) {
+	.comment {
+		grid-template-columns: min-content min-content auto auto;
+		padding: 1.5em;
+		gap: 0 1.5em;
+	}
+	.comment .vote {
+		order: 1;
+		grid-row: 1/3;
+		align-self: start;
+		display: block;
+	}
+	.comment .vote-count {
+		display: block;
+		text-align: center;
+	}
+	.comment .user {
+		order: 2;
+		grid-column: auto;
+		justify-self: start;
+	}
+	.comment .post-date {
+		order: 3;
+		font-size: 1em;
+		justify-self: start;
+	}
+	.comment .actions {
+		order: 4;
+		grid-column: auto;
+	}
+	.comment .content {
+		order: 5;
+		grid-column: 2/5;
+	}
+	.add {
+		flex-wrap: nowrap;
+		align-items: flex-start;
+	}
+	.add .avatar {
+		order: 1;
+		inline-size: 2.5em;
+	}
+	.add textarea {
+		order: 2;
+		inline-size: auto;
+		flex-grow: 1;
+	}
+	.add .actions {
+		order: 3;
+	}
+}
+
+@media (hover : hover) {
+	button,
+	input[type="submit"] {
+		cursor: pointer;
+	}
 }
